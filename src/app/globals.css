@@ -1,26 +1,282 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ========================================
+   LIGHT MODE - Clean & Professional
+   ======================================== */
+:root {
+  --radius: 0.75rem;
+
+  /* Backgrounds */
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(224 71% 4%);
+
+  /* Card */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(224 71% 4%);
+
+  /* Popover */
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(224 71% 4%);
+
+  /* Primary - Vibrant Purple */
+  --primary: hsl(262 83% 58%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  /* Secondary */
+  --secondary: hsl(220 14% 96%);
+  --secondary-foreground: hsl(224 71% 4%);
+
+  /* Muted */
+  --muted: hsl(220 14% 96%);
+  --muted-foreground: hsl(220 9% 46%);
+
+  /* Accent */
+  --accent: hsl(262 83% 58% / 10%);
+  --accent-foreground: hsl(262 83% 58%);
+
+  /* Destructive */
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  /* Borders */
+  --border: hsl(220 13% 91%);
+  --input: hsl(220 13% 91%);
+  --ring: hsl(262 83% 58%);
+
+  /* Charts */
+  --chart-1: hsl(262 83% 58%);
+  --chart-2: hsl(173 58% 39%);
+  --chart-3: hsl(43 96% 56%);
+  --chart-4: hsl(339 90% 51%);
+  --chart-5: hsl(12 76% 61%);
+
+  /* Sidebar */
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(224 71% 4%);
+  --sidebar-primary: hsl(262 83% 58%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(220 14% 96%);
+  --sidebar-accent-foreground: hsl(224 71% 4%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(262 83% 58%);
+}
+
+/* ========================================
+   DARK MODE - Rich & Vibrant
+   ======================================== */
+.dark {
+  /* Backgrounds - Deep slate */
+  --background: hsl(222 47% 11%);
+  --foreground: hsl(210 40% 98%);
+
+  /* Card - Slightly lighter than bg */
+  --card: hsl(222 47% 14%);
+  --card-foreground: hsl(210 40% 98%);
+
+  /* Popover */
+  --popover: hsl(222 47% 14%);
+  --popover-foreground: hsl(210 40% 98%);
+
+  /* Primary - Vibrant Purple */
+  --primary: hsl(262 83% 65%);
+  --primary-foreground: hsl(0 0% 100%);
+
+  /* Secondary */
+  --secondary: hsl(222 47% 20%);
+  --secondary-foreground: hsl(210 40% 98%);
+
+  /* Muted */
+  --muted: hsl(222 47% 20%);
+  --muted-foreground: hsl(215 20% 65%);
+
+  /* Accent */
+  --accent: hsl(262 83% 65% / 15%);
+  --accent-foreground: hsl(262 83% 75%);
+
+  /* Destructive */
+  --destructive: hsl(0 72% 51%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  /* Borders - Subtle visibility */
+  --border: hsl(222 47% 25%);
+  --input: hsl(222 47% 25%);
+  --ring: hsl(262 83% 65%);
+
+  /* Charts */
+  --chart-1: hsl(262 83% 65%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(43 96% 56%);
+  --chart-4: hsl(339 90% 60%);
+  --chart-5: hsl(12 76% 61%);
+
+  /* Sidebar */
+  --sidebar: hsl(222 47% 14%);
+  --sidebar-foreground: hsl(210 40% 98%);
+  --sidebar-primary: hsl(262 83% 65%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(222 47% 20%);
+  --sidebar-accent-foreground: hsl(210 40% 98%);
+  --sidebar-border: hsl(222 47% 25%);
+  --sidebar-ring: hsl(262 83% 65%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Improved typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+
+  p {
+    @apply leading-relaxed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ========================================
+   Custom Scrollbar (Dark Mode Friendly)
+   ======================================== */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* ========================================
+   Gradient Text Utility
+   ======================================== */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent;
+}
+
+/* ========================================
+   Glass Effect
+   ======================================== */
+.glass {
+  @apply bg-card/80 backdrop-blur-xl border border-border/50;
+}
+
+/* ========================================
+   Glow Effects
+   ======================================== */
+.glow-primary {
+  box-shadow: 0 0 20px hsl(262 83% 65% / 20%),
+              0 0 40px hsl(262 83% 65% / 10%);
+}
+
+.glow-primary-lg {
+  box-shadow: 0 0 40px hsl(262 83% 65% / 30%),
+              0 0 80px hsl(262 83% 65% / 15%);
+}
+
+/* ========================================
+   Shimmer Animation
+   ======================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+@layer base {
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
