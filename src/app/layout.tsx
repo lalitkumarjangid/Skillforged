@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@client/components/ui/toaster";
 import { Footer } from "@client/components/layout/Footer";
+import { Providers } from "./providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -36,11 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-sans antialiased bg-black text-white min-h-screen flex flex-col`}>
-        <div className="flex-1">
-          {children}
-        </div>
-        <Footer />
-        <Toaster position="bottom-right" />
+        <Providers>
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+          <Toaster position="bottom-right" />
+        </Providers>
       </body>
     </html>
   );
