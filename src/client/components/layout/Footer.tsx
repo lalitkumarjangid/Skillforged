@@ -1,8 +1,16 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { Github, Linkedin, ExternalLink } from "lucide-react";
 
 export function Footer() {
+  const { data: session } = useSession();
+
+ 
+  if (session?.user) {
+    return null;
+  }
+
   return (
     <footer className="mt-32 bg-gradient-to-b from-black via-black to-zinc-900 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto px-6 py-24">
