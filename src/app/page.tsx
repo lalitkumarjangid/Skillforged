@@ -7,6 +7,7 @@ import { ShimmerButton } from "@client/components/magicui/shimmer-button";
 import { StripedPattern } from "@client/components/magicui/striped-pattern";
 import { ResizableNavbar } from "@client/components/aceternity/resizable-navbar";
 import { DitherShader } from "@client/components/aceternity/dither-shader";
+import { Footer } from "@client/components/layout/Footer";
 import {
   Sparkles,
   BookOpen,
@@ -111,10 +112,11 @@ const stats = [
 
 export default function HomePage() {
   return (
-    <DitherShader intensity={0.3}>
-      <div className="min-h-screen bg-black text-white">
-        {/* Navigation */}
-        <ResizableNavbar />
+    <div className="flex flex-col min-h-screen bg-black text-white">
+      <DitherShader intensity={0.3}>
+        <div className="flex-1">
+          {/* Navigation */}
+          <ResizableNavbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
@@ -392,7 +394,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      </div>
-    </DitherShader>
+        </div>
+      </DitherShader>
+      <Footer />
+    </div>
   );
 }
